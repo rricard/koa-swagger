@@ -23,7 +23,10 @@
   },
   "homepage": "https://github.com/rricard/koa-swagger",
   "dependencies": {
-    "koa": "^0.19.1"
+    "jayschema": "^0.3.1",
+    "json-schema-deref-sync": "^0.1.1",
+    "koa": "^0.19.1",
+    "routington": "^1.0.3"
   },
   "devDependencies": {
     "co-mocha": "^1.1.0",

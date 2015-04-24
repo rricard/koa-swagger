@@ -87,9 +87,8 @@ app.use(require('koa-swagger')(require('swagger.json'));
 //   validator: jay.validate
 // }));
 
-// * When entering in the generator, everything should be safe.
-// * You can for example return hashed passwords, koa-swagger will
-//   tail them from the results.
+// Checked parameters are available in `this.parameters`.
+// You still have access to other parameters
 var _ = require('koa-route');
 app.use(_.get('/api/pets', pets.list));
 app.use(_.get('/api/pets/:name', pets.show));
