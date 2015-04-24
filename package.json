@@ -1,0 +1,36 @@
+{
+  "name": "koa-swagger",
+  "version": "0.1.0",
+  "description": "Create versionned & documented APIs compliant with swagger",
+  "main": "lib/",
+  "scripts": {
+    "test": "mocha --require co-mocha test/",
+    "lint": "eslint lib/ test/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rricard/koa-swagger.git"
+  },
+  "keywords": [
+    "koa",
+    "swagger",
+    "api"
+  ],
+  "author": "Robin Ricard",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rricard/koa-swagger/issues"
+  },
+  "homepage": "https://github.com/rricard/koa-swagger",
+  "dependencies": {
+    "bluebird": "^2.9.24",
+    "koa": "^0.19.1",
+    "koa-route": "^2.4.1"
+  },
+  "devDependencies": {
+    "co-mocha": "^1.1.0",
+    "eslint": "^0.19.0",
+    "mocha": "^2.2.4",
+    "supertest": "^0.15.0"
+  }
+}

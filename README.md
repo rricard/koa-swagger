@@ -1,2 +1,3 @@
 # koa-swagger
-Create versionned &amp; documented APIs inside your code
+
+Create versionned & documented APIs compliant with swagger
