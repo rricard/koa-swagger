@@ -1,5 +1,7 @@
 # koa-swagger
 
+[![Circle CI](https://circleci.com/gh/rricard/koa-swagger/tree/master.svg?style=svg)](https://circleci.com/gh/rricard/koa-swagger/tree/master)
+
 request + response sanitation/validation against swagger specs
 
 ## Introduction
