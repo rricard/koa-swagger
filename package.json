@@ -25,7 +25,6 @@
   "dependencies": {
     "jayschema": "^0.3.1",
     "json-schema-deref-sync": "^0.1.1",
-    "koa": "^0.19.1",
     "routington": "^1.0.3"
   },
   "devDependencies": {
