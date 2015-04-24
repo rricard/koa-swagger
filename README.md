@@ -91,8 +91,8 @@ app.use(require('koa-swagger')(require('swagger.json'));
 // * You can for example return hashed passwords, koa-swagger will
 //   tail them from the results.
 var _ = require('koa-route');
-app.use(_.get('/pets', pets.list));
-app.use(_.get('/pets/:name', pets.show));
+app.use(_.get('/api/pets', pets.list));
+app.use(_.get('/api/pets/:name', pets.show));
 ```
 
 ## Contributing
