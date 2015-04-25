@@ -125,10 +125,11 @@ app.use(_.get("/api/hello/:name", function* () {
 }));
 ```
 
-## Missing features
+## Missing features/bugs
 
 Here are some things I'm planning to do when time arises:
 
+- **MORE TESTS** The code has just been refactored for writing unit tests
 - Consumable/Producible MIME type support
 - Parameter types coercion for query parameters
 - Input date strings conversions
