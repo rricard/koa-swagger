@@ -125,6 +125,17 @@ app.use(_.get("/api/hello/:name", function* () {
 }));
 ```
 
+## Missing features
+
+Here are some things I'm planning to do when time arises:
+
+- Consumable/Producible MIME type support
+- Parameter types coercion for query parameters
+- Input date strings conversions
+- Output date objects conversions
+- Complex parameter objects tailing (ie. remove unspecified attrs recursively)
+- Output objects tailing (ie. remove unspecified attrs recursively)
+
 ## Contributing
 
 You have to write PRs if you want me to merge something into master.
