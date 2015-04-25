@@ -84,23 +84,44 @@ var SPEC = {
             in: "path",
             type: "string",
             default: "World" },
-          { name: "chk",
+          { name: "punctuation",
             in: "query",
-            type: "boolean",
+            type: "string",
             required: true }
-        ]
+        ],
+        responses: {
+          "200": {
+            description: "Everything went well :)",
+            schema: { $ref: "#/definitions/Message" }
+          },
+          "400": {
+            description: "Issue with the parameters"
+          }
+        }
+      }
+    }
+  },
+  definitions: {
+    Message: {
+      required: [ "message" ],
+      properties: {
+        message: {
+          type: "string"
+        }
       }
     }
   }
 };
 
-var app = require('koa')();
-app.use(require('koa-bodyparser')());
-app.use(require('koa-swagger')(SPEC);
+var app = require("koa")();
+app.use(require("koa-bodyparser")());
+app.use(require("koa-swagger")(SPEC));
 
-var _ = require('koa-route');
-app.use(_.get('/api/hello/:name', function* () {
-  this.body = "Hello " + this.parameter.name + (this.parameter.chk ? "!" : ".");
+var _ = require("koa-route");
+app.use(_.get("/api/hello/:name", function* () {
+  this.body = {
+    message: "Hello " + this.parameter.name + this.parameter.punctuation
+  };
 }));
 ```
 
