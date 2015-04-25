@@ -30,9 +30,9 @@ $ npm install --save koa-swagger
 
 ## Dependencies
 
-koa-swagger does not provide anything else than what it just does: check and
-sanitize. That's why you'll need to **provide other middleware** before
-injecting koa-swagger.
+koa-swagger does not provide anything else than what he has been created for: 
+check and sanitize. That's why you'll need to **provide other middleware** 
+before injecting koa-swagger.
 
 The choice of which middleware you put before is entirely up to you but all
 you need should be [bodyparser](https://github.com/koajs/bodyparser) (it
@@ -42,15 +42,7 @@ depends on your API's needs actually):
 $ npm install --save koa-bodyparser
 ```
 
-The json-schema validation function can be provided by you. You should
-use [jayschema](https://github.com/natesilva/jayschema) to be free to add
-any formatter you need but that's completely optional:
-
-```shell
-$ npm install --save jayschema
-```
-
-Last but not the least, you'll need to implement the spec! For that, use what
+You'll also need to implement the spec! For that, use what
 you prefer, vanilla-koa or [route](https://github.com/koajs/route) for example:
 
 ```shell
@@ -60,47 +52,64 @@ $ npm install --save koa-route
 Here's a one-liner:
 
 ```shell
-$ npm i --save koa koa-bodyparser jayschema koa-swagger koa-route
+$ npm i --save koa koa-bodyparser koa-swagger koa-route
 ```
 
 ## Usage
 
 After that, it's really simple:
 
-- Load your swagger spec in a JS object
-- Load a validator function (to customize it if you want !)
+- Put your swagger spec in a JS object
 - Add bodyparser as middleware
 - Add koa-swagger as middleware
 - Implement your routes
 
-Here's how to do it:
+Here's an example:
 
 ```js
+var SPEC = {
+  swagger: "2.0",
+  info: {
+    title: "Hello API",
+    version: "1.0.0"
+  },
+  basePath: "/api",
+  paths: {
+    "/hello/:name": {
+      "get": {
+        tags: [ "Hello" ],
+        summary: "Says hello",
+        parameters: [
+          { name: "name",
+            in: "path",
+            type: "string",
+            default: "World" },
+          { name: "chk",
+            in: "query",
+            type: "boolean",
+            required: true }
+        ]
+      }
+    }
+  }
+};
+
 var app = require('koa')();
 app.use(require('koa-bodyparser')());
-app.use(require('koa-swagger')(require('swagger.json'));
+app.use(require('koa-swagger')(SPEC);
 
-// * Add format validators (optional)
-// var jay = new require('jayschema');
-// jay.addFormat('email', function(val) { /*...*/ });
-// app.use(require('koa-swagger')(require('swagger.json'), {
-//   validator: jay.validate
-// }));
-
-// Checked parameters are available in `this.parameters`.
-// You still have access to other parameters
 var _ = require('koa-route');
-app.use(_.get('/api/pets', pets.list));
-app.use(_.get('/api/pets/:name', pets.show));
+app.use(_.get('/api/hello/:name', function* () {
+  this.body = "Hello " + this.parameter.name + (this.parameter.chk ? "!" : ".");
+}));
 ```
 
 ## Contributing
 
 You have to write PRs if you want me to merge something into master.
 
-I need to accept your feature or fix (not a problem usually!),
-the tests must pass, you should test your new features and the linter
-must pass too.
+I need to accept your feature or fix (not a problem usually!) although
+the tests must pass (you should test new features) and the linter must pass too.
 
 Here's a command to check everything at once (the CI will complain otherwise):
 
