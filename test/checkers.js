@@ -103,6 +103,6 @@ describe("check", function() {
     });
     it("should validate body contents");
     it("should validate path-parameters");
-    it("should validate form data"); // TODO
+    it("should validate form data");
   });
 });
