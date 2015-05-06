@@ -1,6 +1,6 @@
 {
   "name": "koa-swagger",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "request + response sanitation/validation against swagger specs",
   "main": "lib/",
   "scripts": {
