@@ -75,7 +75,7 @@ var SPEC = {
   },
   basePath: "/api",
   paths: {
-    "/hello/:name": {
+    "/hello/{name}": {
       "get": {
         tags: [ "Hello" ],
         summary: "Says hello",
@@ -83,6 +83,7 @@ var SPEC = {
           { name: "name",
             in: "path",
             type: "string",
+            "required": true,
             default: "World" },
           { name: "punctuation",
             in: "query",
